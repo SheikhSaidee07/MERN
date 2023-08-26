@@ -17,7 +17,6 @@ export default function Modal({
 
   const sendData = async (body) => {
     try {
-      console.log(activeImage._id);
       const res = await axios.put(
         `http://127.0.0.1:8080/api/v1/pictures/${activeImage._id}`,
         body,
@@ -27,7 +26,6 @@ export default function Modal({
           },
         }
       );
-      console.log(res);
     } catch (error) {
       alert(error.response.data.message);
     }
@@ -57,7 +55,7 @@ export default function Modal({
         <div className="modal">
           <div onClick={toggleModal} className="overlay"></div>
           <div className="modal-content">
-            <div className="job-brief">
+            <div className="content-brief">
               <div className="form-container">
                 <form onSubmit={handleSubmit} method="post">
                   <div className="form-group">
@@ -67,7 +65,6 @@ export default function Modal({
                       id="formdata"
                       value={option.tag}
                       defaultValue={activeImage.tags}
-                      onChange={(e) => "heekko" /*  setTag(e.target.value) */}
                       required
                     >
                       <option value="">Select any Feeling</option>

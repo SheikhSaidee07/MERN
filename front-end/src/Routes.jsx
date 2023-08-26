@@ -1,6 +1,6 @@
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import SignUp from "./pages/SignUp";
+import Register from "./pages/Register";
 import Layout from "./pages/layout/Layout";
 import WebCam from "./pages/WebCam";
 import ModeratorDashboard from "./pages/ModeratorDashboard";
@@ -16,8 +16,8 @@ const routes = [
     element: <Login />,
   },
   {
-    path: "/signup",
-    element: <SignUp />,
+    path: "/register",
+    element: <Register />,
   },
 
   {
