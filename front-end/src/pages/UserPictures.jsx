@@ -3,6 +3,8 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import Modal from "./Modal";
+import Swal from "sweetalert2";
+
 const UserPictures = () => {
   const { id: user_id, token } = jwt_decode(localStorage.getItem("token"));
   const [isLoading, setLoading] = useState(false);
@@ -23,11 +25,9 @@ const UserPictures = () => {
       );
       if (res.status === 200) {
         setData(res.data.data.pictures);
-        console.log(res.data.data.pictures);
       }
     } catch (err) {
       alert(err.response.data.message);
-      console.log(err.response.data.message);
     } finally {
       setLoading(false);
     }
@@ -47,9 +47,13 @@ const UserPictures = () => {
       );
       if (res.status === 200) {
         setData(res.data.data.pictures);
-        console.log(res.data.data.pictures);
         getAllPictures();
-        alert("image deleted");
+        Swal.fire({
+          title: "Deleted!",
+          text: "Picture Data has been deleted.",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
       }
     } catch (err) {
       alert(err.response.data.message);

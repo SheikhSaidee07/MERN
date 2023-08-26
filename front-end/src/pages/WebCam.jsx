@@ -4,7 +4,7 @@ import Webcam from "react-webcam";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useCallback, useRef, useState } from "react";
-
+import Swal from "sweetalert2";
 function WebCam() {
   const { id: user_id, token } = jwt_decode(localStorage.getItem("token"));
   const [imgSrc, setImgSrc] = useState(null);
@@ -58,7 +58,12 @@ function WebCam() {
       );
       console.log(res);
       if (res.status === 201) {
-        alert("image uploaded successfully");
+        Swal.fire({
+          title: "Success!",
+          text: "Uploaded Successfully",
+          icon: "Success",
+          confirmButtonText: "Ok",
+        });
         retake();
       }
     } catch (error) {
@@ -76,7 +81,6 @@ function WebCam() {
         comments: comment,
       };
       sendData(body);
-      console.log(body);
       setComment("");
       setTag("");
       setMessage("");

@@ -253,6 +253,8 @@ nav ul li a.active {
 .card-data {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 .card {
   width: 30%;
@@ -283,6 +285,7 @@ nav ul li a.active {
   margin: 1rem 0;
 }
 .card-category {
+  display: inline-block;
   background-color: #f8f0e5;
   color: #102c57;
   padding: 1rem;
@@ -371,7 +374,7 @@ body.active-modal {
   border-radius: 3px;
   z-index: 100;
 }
-.job-brief {
+.content-brief {
   margin: 20px 0;
 }
 .close-modal {

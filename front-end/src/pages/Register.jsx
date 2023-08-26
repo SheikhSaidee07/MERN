@@ -1,8 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 function SignUp() {
   const navigate = useNavigate();
+
+  /*  Swal.fire({
+    title: <strong>Good job!</strong>,
+    html: <i>You clicked the button!</i>,
+    icon: "success",
+  }); */
+
   const register = async (body) => {
     let res;
     try {
@@ -12,11 +20,12 @@ function SignUp() {
       );
       if (res.status === 201) {
         localStorage.setItem("token", res.data.token);
+        Swal.fire("Thank You!", "Your Data has been Saved!", "success");
         navigate("/");
       }
     } catch (err) {
       alert(err.response.data.message);
-      console.log(err.response.data.message);
+      /* console.log(err.response.data.message); */
     }
   };
   function handleSubmit(e) {
@@ -31,6 +40,7 @@ function SignUp() {
     e.target.email.value = "";
     e.target.password.value = "";
   }
+
   useEffect(() => {
     if (localStorage.getItem("token")) navigate("/");
   }, []); //eslint-disable-line
