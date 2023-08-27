@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import Swal from "sweetalert2";
 const Angrypicmode = () => {
   const [data, setData] = useState([]);
   const { token } = jwt_decode(localStorage.getItem("token"));
@@ -14,11 +15,9 @@ const Angrypicmode = () => {
       );
       if (res.status === 200) {
         setData(res.data.data.angryTagged);
-        console.log(res.data.data.angryTagged);
       }
     } catch (err) {
       alert(err.response.data.message);
-      console.log(err.response.data.message);
     } finally {
       setLoading(false);
     }
@@ -39,7 +38,12 @@ const Angrypicmode = () => {
       );
       if (res.status === 200) {
         getAngryPictures();
-        alert("User deleted Successfully");
+        Swal.fire({
+          title: "Deleted!",
+          text: "Picture has been deleted.",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
       }
     } catch (err) {
       /* alert(err.response.data.message);
@@ -53,10 +57,10 @@ const Angrypicmode = () => {
   };
   return (
     <>
-      {!isLoading &&
-        data.map((item, index) => (
-          <div key={index} className="card-wrapper">
-            <div className="card">
+      <div className="card-data">
+        {!isLoading &&
+          data.map((item, index) => (
+            <div key={index} className="card" style={{ position: "relative" }}>
               <div className="card-header">
                 <div className="card-category-wrapper">
                   <h3>{item.user_id?.name}</h3>
@@ -85,9 +89,9 @@ const Angrypicmode = () => {
                 Delete
               </button>
             </div>
-          </div>
-        ))}
-      {isLoading && <h1>loading...</h1>}
+          ))}
+        {isLoading && <h1 className="loading-txt">Loading...</h1>}
+      </div>
     </>
   );
 };

@@ -12,7 +12,6 @@ const UserPictures = () => {
   const [activeImage, setActiveImage] = useState("");
   const [modal, setModal] = useState(false);
   const getAllPictures = async () => {
-    let res;
     try {
       setLoading(true);
       const res = await axios(

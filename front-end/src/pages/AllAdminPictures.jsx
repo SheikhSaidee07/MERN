@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import Modal from "./Modal";
+import Swal from "sweetalert2";
+
 function AllAdminPictures() {
   const { id: user_id, token } = jwt_decode(localStorage.getItem("token"));
   const [data, setData] = useState([]);
@@ -17,7 +19,6 @@ function AllAdminPictures() {
       res = await axios.get("http://127.0.0.1:8080/api/v1/moderator/");
       if (res.status === 200) {
         setData(res.data.data.userPictures);
-        console.log(res.data.data.userPictures);
       }
     } catch (err) {
       alert(err.response.data.message);
@@ -41,9 +42,13 @@ function AllAdminPictures() {
       );
       if (res.status === 200) {
         setData(res.data.data.pictures);
-        console.log(res.data.data.pictures);
         getAllPictures();
-        alert("image deleted");
+        Swal.fire({
+          title: "Deleted!",
+          text: "User's picture has been Deleted.",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
       }
     } catch (err) {
       alert(err.response.data.message);
@@ -103,7 +108,7 @@ function AllAdminPictures() {
               </button>
             </div>
           ))}
-        {isLoading && <h1>loading...</h1>}
+        {isLoading && <h1 className="loading-txt">Loading...</h1>}
       </div>
     </>
   );

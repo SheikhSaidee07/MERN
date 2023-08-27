@@ -34,33 +34,31 @@ function ModeratorDashboard() {
       <div className="card-data">
         {!isLoading &&
           data.map((item, index) => (
-            <div key={index} className="card-wrapper">
-              <div className="card">
-                <div className="card-header">
-                  <div className="card-category-wrapper">
-                    {item.isRestricted && (
-                      <span className="restricted-image">
-                        Restricted :This Image Violates our policy
-                      </span>
-                    )}
-                    <img
-                      src={item.picture}
-                      alt={"dsd"}
-                      style={{
-                        filter: item.isRestricted ? "blur(10px)" : "none",
-                      }}
-                    />
-                    <h3>Tag:</h3>
-                    <span className="card-category">{item.tags}</span>
-                  </div>
-                  <h3 className="comment-txt">Comments:</h3>
-                  <span className="card-category">{item.comments}</span>
+            <div key={index} className="card" style={{ position: "relative" }}>
+              <div className="card-header">
+                <div className="card-category-wrapper">
+                  {item.isRestricted && (
+                    <span className="restricted-image">
+                      Restricted :This Image Violates our policy
+                    </span>
+                  )}
+                  <img
+                    src={item.picture}
+                    alt={"dsd"}
+                    style={{
+                      filter: item.isRestricted ? "blur(10px)" : "none",
+                    }}
+                  />
+                  <h3>Tag:</h3>
+                  <span className="card-category">{item.tags}</span>
                 </div>
+                <h3 className="comment-txt">Comments:</h3>
+                <span className="card-category">{item.comments}</span>
               </div>
             </div>
           ))}
       </div>
-      {isLoading && <h1>loading...</h1>}
+      {isLoading && <h1 className="loading-txt">loading...</h1>}
     </>
   );
 }

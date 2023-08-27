@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-
+import Swal from "sweetalert2";
 const AllUsers = () => {
   const navigate = useNavigate();
   const { id: user_id, token } = jwt_decode(localStorage.getItem("token"));
@@ -19,11 +19,9 @@ const AllUsers = () => {
       console.log(res);
       if (res.status === 200) {
         setData(res.data.data.allUsers);
-        console.log(res.data.data.allUsers);
       }
     } catch (err) {
       alert(err.response.data.message);
-      console.log(err.response.data.message);
     } finally {
       setLoading(false);
     }
@@ -41,7 +39,12 @@ const AllUsers = () => {
       );
       if (res.status === 200) {
         getAllUsers();
-        alert("User deleted Successfully");
+        Swal.fire({
+          title: "Deleted!",
+          text: "Picture Data has been deleted.",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
       }
     } catch (err) {
       alert(err.response.data.message);
@@ -68,7 +71,6 @@ const AllUsers = () => {
         }
       );
       if (res.status === 200) {
-        console.log(res.body);
       }
     } catch (err) {
       alert(err.response.data.message);
@@ -79,7 +81,6 @@ const AllUsers = () => {
   const getUserImage = (img_id) => {
     getImage(img_id);
   };
-
   return (
     <div className="card-data">
       {!isLoading &&
