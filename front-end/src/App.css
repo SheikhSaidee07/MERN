@@ -219,6 +219,8 @@ nav ul li a {
 }
 nav ul li .logout-btn {
   margin-top: -1rem;
+  background-color: #f8f0e5;
+  color: #102c57;
 }
 nav ul li .logout-btn:last-child {
   float: right;
