@@ -58,7 +58,7 @@ function ModeratorDashboard() {
             </div>
           ))}
       </div>
-      {isLoading && <h1 className="loading-txt">loading...</h1>}
+      {isLoading && <h1 className="loading-txt">Loading...</h1>}
     </>
   );
 }
