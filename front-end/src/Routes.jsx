@@ -19,7 +19,6 @@ const routes = [
     path: "/register",
     element: <Register />,
   },
-
   {
     path: "/",
     element: <Layout />,

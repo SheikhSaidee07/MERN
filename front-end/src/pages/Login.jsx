@@ -55,7 +55,7 @@ function Login() {
         <div className="bottom-txt">
           <p className="message">
             Not registered?{" "}
-            <Link to="/signup" className="link-txt">
+            <Link to="/register" className="link-txt">
               {" "}
               Register
             </Link>
