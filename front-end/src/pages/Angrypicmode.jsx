@@ -40,7 +40,7 @@ const Angrypicmode = () => {
         getAngryPictures();
         Swal.fire({
           title: "Deleted!",
-          text: "Picture has been deleted.",
+          text: "Picture has been Restricted.",
           icon: "success",
           confirmButtonText: "Ok",
         });
@@ -86,7 +86,7 @@ const Angrypicmode = () => {
                 className="btn-img"
                 onClick={() => handleDelete(item._id)}
               >
-                Delete
+                Restrict
               </button>
             </div>
           ))}
