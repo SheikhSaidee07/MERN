@@ -39,7 +39,7 @@ const Angrypicmode = () => {
       if (res.status === 200) {
         getAngryPictures();
         Swal.fire({
-          title: "Deleted!",
+          title: "Restricted!",
           text: "Picture has been Restricted.",
           icon: "success",
           confirmButtonText: "Ok",
